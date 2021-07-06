@@ -1,0 +1,22 @@
+{
+  "name": "generatorofmaze",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YannickAiguier/GeneratorOfMaze.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YannickAiguier/GeneratorOfMaze/issues"
+  },
+  "homepage": "https://github.com/YannickAiguier/GeneratorOfMaze#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
