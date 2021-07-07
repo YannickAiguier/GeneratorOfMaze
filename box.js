@@ -22,5 +22,7 @@ class Box {
 
     getRandomInt(max) {
         return Math.floor(Math.random() * max) + 1;
-      }
+    }
 }
+
+module.exports = Box;
