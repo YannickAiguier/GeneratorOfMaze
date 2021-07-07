@@ -11,6 +11,30 @@ const visited = new Array();
 
 // le labyrinthe
 let myMaze = new Maze(mazeHeight, mazeWidth);
+
+// coordonnées de départ
+let x = 0;
+let y = 0;
+
+// coordonnées de la destination, qui seront fixées à la fin
+let endx = 3;
+let endy = 3;
+
+// initialiser le tableau des cases visitées, faux partout
+for (let i = 0; i < mazeHeight; i++) {
+    visited[i] = new Array(mazeWidth);
+    for (let j = 0; j < mazeWidth; j++) {
+        visited[i][j] = false;
+    }
+}
+console.table(visited);
+
+////////
+// Début du programme
+////////
+
+
+
 console.log(myMaze);
 console.log(myMaze.getBox(0,0));
 console.log(myMaze.getBox(0,0).hasPossibleNeighbors());
