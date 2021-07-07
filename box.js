@@ -7,12 +7,20 @@ class Box {
         this.possibleNeighbors = new Array();
     }
 
-    hasPossibleNeighbors() {
-        return this.possibleNeighbors.length > 0;
+    addNeighbor(x, y) {
+        this.possibleNeighbors.push([x, y]);
     }
 
-    isPossible() {
-        return (this.x >= 0 && this.x < this.mazeWidth && this.y >= 0 && this.y < this.mazeHeight);
+    findNeighbor(x, y) {
+        // indexOf
+    }
+
+    deleteNeighbor(i) {
+        this.possibleNeighbors.splice(i, 1);
+    }
+
+    hasPossibleNeighbors() {
+        return this.possibleNeighbors.length > 0;
     }
 
     chooseNeighbors() {

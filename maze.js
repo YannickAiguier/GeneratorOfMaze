@@ -13,13 +13,45 @@ class Maze {
         }
     }
 
-    findPossibleNeighbors(x, y) {
-        // pour chaque case adjacente dans l'ordre E S O N
-        // x-1, y / x, y+1 / x+1, y / x, y-1
+    getBox(x, y) {
+        return this.boxes[y][x];
+    }
 
-        // si box_adjacente.isPossible()
-        
-        // alors ajouter box_adjacente à this.possibleNeighbors
+    isPossible(x, y) {
+        if (x >= 0 && x < this.mazeWidth && y >= 0 && y < this.mazeHeight) {
+            return (this.boxes[y][x] != undefined);
+        }
+        return false;
+    }
+
+    findPossibleNeighbors(x, y) {
+        // pour chaque case adjacente dans l'ordre E S O N (x-1, y / x, y+1 / x+1, y / x, y-1)
+         // si box_adjacente.isPossible() alors ajouter box_adjacente à possibleNeighbors
+        if (this.isPossible(x-1, y)) {
+            console.log("case existante");
+            this.getBox(x, y).addNeighbor(x-1, y);
+        } else {
+            console.log("case inexistante");
+        }
+        if (this.isPossible(x, y+1)) {
+            console.log("case existante");
+            this.getBox(x, y).addNeighbor(x, y+1);
+        } else {
+            console.log("case inexistante");
+        }
+        if (this.isPossible(x+1, y)) {
+            console.log("case existante");
+            this.getBox(x, y).addNeighbor(x+1, y);
+        } else {
+            console.log("case inexistante");
+        }
+        if (this.isPossible(x, y-1)) {
+            console.log("case existante");
+            this.getBox(x, y).addNeighbor(x, y-1);
+        } else {
+            console.log("case inexistante");
+        }
+       
     }
 }
 
