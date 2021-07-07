@@ -1,23 +1,30 @@
 class Box {
-    constructor(x, y) {
+    constructor(x, y, mazeWidth, mazeHeight) {
         this.x = x;
         this.y = y;
-        this.possibleNeighbors = new Set();
+        this.mazeWidth = mazeWidth;
+        this.mazeHeight = mazeHeight;
+        this.possibleNeighbors = new Array();
     }
 
     hasPossibleNeighbors() {
-
+        return this.possibleNeighbors.length > 0;
     }
 
-    isPossible() {
-
+    isPossible(width, height) {
+        return (this.x >= 0 && this.x < this.mazeWidth && this.y >= 0 && this.y < this.mazeHeight);
     }
 
     findPossibleNeighbors() {
-
+        
     }
 
     chooseNeighbors() {
-        
+        let nb = this.getRandomInt(this.possibleNeighbors.length);
+        return this.possibleNeighbors[nb];
     }
+
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max) + 1;
+      }
 }
