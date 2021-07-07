@@ -11,12 +11,8 @@ class Box {
         return this.possibleNeighbors.length > 0;
     }
 
-    isPossible(width, height) {
+    isPossible() {
         return (this.x >= 0 && this.x < this.mazeWidth && this.y >= 0 && this.y < this.mazeHeight);
-    }
-
-    findPossibleNeighbors() {
-        
     }
 
     chooseNeighbors() {
