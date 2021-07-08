@@ -28,9 +28,31 @@ console.log(myMaze);
 ////////
 
 generateBox([0, 0]);
+console.log(path);
 
+// création du labyrinthe "exploitable", on le remplit de murs ('M')
+let finalMaze = new Array(mazeHeight * 2 - 1);
+for (let i = 0; i < mazeHeight * 2 - 1; i++) {
+    finalMaze[i] = new Array(mazeWidth * 2 - 1);
+    for (let j = 0; j < mazeWidth * 2 - 1; j++) {
+        finalMaze[i][j] = 'M';
+    }
+}
+// creuser la case de départ
+//dug(x, y);
 
-console.log(myMaze);
+// pour chaque liaison dans path
+path.forEach(function(value) {
+    console.log(("Valeur : " + value));
+    // calculer les coordonnées de la case intermédiaire
+    //let intermediate = findIntermediate(value);
+    // creuser la case intermédiaire
+    //dug(intermediate);
+    // récupérer les coordonnées de la case liée
+    //let connected = [1, 1];
+    // creuser la case liée
+    //dug(connected);
+})
 
 
 ////////
