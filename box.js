@@ -17,12 +17,17 @@ class Box {
 
     chooseNeighbors() {
         // tirage aléatoire de l'indice de la case choisie dans possibleNeighbors
-        console.log((this.possibleNeighbors.length));
-        let nb = this.getRandomInt(this.possibleNeighbors.length);
-        // suppression de cete case du tableau en retour de son contenu
-        console.log(this.possibleNeighbors);
-        console.log(nb);
-        return this.possibleNeighbors.splice(nb, 1);
+        // console.log((this.possibleNeighbors.length));
+        // let nb = this.getRandomInt(this.possibleNeighbors.length);
+        // // suppression de cete case du tableau en retour de son contenu
+        // console.log(this.possibleNeighbors);
+        // console.log(nb);
+        // return this.possibleNeighbors.splice(nb, 1);
+
+        // dans un premier temps retour du premier voisin
+        console.log("possibleNeighbors :");
+        console.table(this.possibleNeighbors);
+        return [this.possibleNeighbors[0]];
     }
 
     getRandomInt(max) {

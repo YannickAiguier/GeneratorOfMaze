@@ -37,27 +37,18 @@ console.log(myMaze);
 function generateBox([x, y]) {
     // ajout de la case courante à la liste des cases visitées
     myMaze.setVisited(x, y);
-    console.log("Visited :");
-    console.table(myMaze.visited);
+    // établir la liste des cases voisines disponibles
     myMaze.findPossibleNeighbors(x, y);
-    console.log("Possible Neighbors :");
-    console.table(myMaze.getBox(x, y).possibleNeighbors);
-    console.log("hasPossibleNeighbors :");
-    console.log(myMaze.getBox(x, y).hasPossibleNeighbors());
-    if (myMaze.getBox(x, y).hasPossibleNeighbors()) {
-        // tant qu'il y a une case disponible
-        while (myMaze.getBox(x, y).hasPossibleNeighbors()) {
-            // tirer au sort une case dispo
-            let nextBoxIndex = myMaze.getBox(x, y).chooseNeighbors();
-            // recommencer avec cette case
-            // console.log pour vérifier valeur retournée ?
-            console.log("nextBoxIndex :");
-            console.table(nextBoxIndex);
-            generateBox(nextBoxIndex[0]);
+    console.log("visited :");
+    console.table(myMaze.visited);
+    console.log("possibleNeighbors :");
+    console.log(myMaze.getBox(x, y).possibleNeighbors);
+    // pour chaque case voisine
+    myMaze.getBox(x, y).possibleNeighbors.forEach(neighbor => {
+        // si la case est disponible (=false dans myMaze.visited)
+        if (myMaze.visited[neighbor[1]][neighbor[0]] == false) {
+            // appelle la fonction sur cette case
+            generateBox(neighbor);
         }
-    } else {
-        // plus de case dispo = cul de sac, rien à faire
-        console.log("Stop !");
-        return;
-    }
+    });
 }
