@@ -3,8 +3,8 @@ const Maze = require('./maze');
 
 // variables du programme
 // taille du labyrinthe
-const mazeWidth = 5;
-const mazeHeight = 5;
+const mazeWidth = 11;
+const mazeHeight = 11;
 
 // le labyrinthe
 let myMaze = new Maze(mazeHeight, mazeWidth);
@@ -40,19 +40,22 @@ for (let i = 0; i < mazeHeight * 2 - 1; i++) {
 }
 console.table(finalMaze);
 // creuser la case de départ
-dug(x, y);
+dug([x, y]);
 console.table(finalMaze);
 
 // pour chaque liaison dans path
 path.forEach(function (value) {
     // calculer les coordonnées de la case intermédiaire
-    //let intermediate = findIntermediate(value);
+    let intermediate = findIntermediate(value);
     // creuser la case intermédiaire
-    //dug(intermediate);
+    dug(intermediate);
     // récupérer les coordonnées de la case liée
-    // let connectedCoordinates = value[1];
+    let connectedCoordinates = value[1];
+    connectedCoordinates[0] = newCoord(connectedCoordinates[0]);
+    connectedCoordinates[1] = newCoord(connectedCoordinates[1]);
     // creuser la case liée
-    // dug(connectedCoordinates);
+    dug(connectedCoordinates);
+    console.table(finalMaze);
 })
 
 
@@ -85,14 +88,20 @@ function generateBox([x, y]) {
     }
 }
 
-function dug(x, y) {
-    let newx = 0;
-    let newy = 0;
-    if (x != 0) {
-        newx = 2 * x + 1;;
-    }
-    if (y != 0) {
-        newy = 2 * y + 1;;
-    }
-    finalMaze[y][x] = '';
+function dug([x, y]) {
+    finalMaze[x][y] = '';
+}
+
+function findIntermediate([[x1, y1], [x2, y2]]) {
+    let newx1 = newCoord(x1);
+    let newy1 = newCoord(y1);
+    let newx2 = newCoord(x2);
+    let newy2 = newCoord(y2);
+    let x3 = newx2 - (newx2 - newx1)/2;
+    let y3 = newy2 - (newy2 - newy1)/2;
+    return [x3, y3];
+}
+
+function newCoord(x) {
+    return 2 * x;
 }
