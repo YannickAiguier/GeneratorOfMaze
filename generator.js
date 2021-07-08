@@ -23,9 +23,13 @@ let path = new Set();
 console.log("myMaze :");
 console.log(myMaze);
 
-////////
-// Début du programme
-////////
+
+
+////////////////////////
+//                    //
+// Début du programme //
+//                    //
+////////////////////////
 
 generateBox([x, y]);
 console.log(path);
@@ -62,10 +66,13 @@ path.forEach(function (value) {
 finalMaze[newCoord(endx)][newCoord(endy)] = 'G';
 console.table(finalMaze);
 
+////////////////////////
+//                    //
+//  Fin du programme  //
+//                    //
+////////////////////////
 
-////////
-// Fin du programme
-////////
+
 
 function generateBox([x, y]) {
     // ajout de la case courante à la liste des cases visitées
@@ -93,7 +100,7 @@ function generateBox([x, y]) {
 }
 
 function dug([x, y]) {
-    finalMaze[x][y] = '';
+    finalMaze[x][y] = "";
 }
 
 function findIntermediate([[x1, y1], [x2, y2]]) {
@@ -108,4 +115,10 @@ function findIntermediate([[x1, y1], [x2, y2]]) {
 
 function newCoord(x) {
     return 2 * x;
+}
+
+function showFinalMaze() {
+    // afficher ligne horizontale de la largeur + 2
+    // 
+    // afficher ligne horizontale de la largeur + 2
 }
