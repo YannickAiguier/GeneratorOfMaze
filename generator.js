@@ -38,20 +38,21 @@ for (let i = 0; i < mazeHeight * 2 - 1; i++) {
         finalMaze[i][j] = 'M';
     }
 }
+console.table(finalMaze);
 // creuser la case de départ
-//dug(x, y);
+dug(x, y);
+console.table(finalMaze);
 
 // pour chaque liaison dans path
-path.forEach(function(value) {
-    console.log(("Valeur : " + value));
+path.forEach(function (value) {
     // calculer les coordonnées de la case intermédiaire
     //let intermediate = findIntermediate(value);
     // creuser la case intermédiaire
     //dug(intermediate);
     // récupérer les coordonnées de la case liée
-    //let connected = [1, 1];
+    // let connectedCoordinates = value[1];
     // creuser la case liée
-    //dug(connected);
+    // dug(connectedCoordinates);
 })
 
 
@@ -82,4 +83,16 @@ function generateBox([x, y]) {
         // une fois la case traitée on refait la liste des case voisines disponibles
         myMaze.findPossibleNeighbors(x, y);
     }
+}
+
+function dug(x, y) {
+    let newx = 0;
+    let newy = 0;
+    if (x != 0) {
+        newx = 2 * x + 1;;
+    }
+    if (y != 0) {
+        newy = 2 * y + 1;;
+    }
+    finalMaze[y][x] = '';
 }
