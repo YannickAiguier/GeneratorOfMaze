@@ -36,19 +36,22 @@ console.log(myMaze);
 
 function generateBox([x, y]) {
     // ajout de la case courante à la liste des cases visitées
-    myMaze.setVisited(x, y);
+    myMaze.setVisited([x, y]);
     // établir la liste des cases voisines disponibles
     myMaze.findPossibleNeighbors(x, y);
     console.log("visited :");
     console.table(myMaze.visited);
     console.log("possibleNeighbors :");
     console.log(myMaze.getBox(x, y).possibleNeighbors);
-    // pour chaque case voisine
-    myMaze.getBox(x, y).possibleNeighbors.forEach(neighbor => {
-        // si la case est disponible (=false dans myMaze.visited)
-        if (myMaze.visited[neighbor[1]][neighbor[0]] == false) {
-            // appelle la fonction sur cette case
-            generateBox(neighbor);
-        }
-    });
+
+    // tant qu'il y a des cases voisines disponibles
+    while (myMaze.getBox(x, y).hasPossibleNeighbors()) {
+        // choisir une case aléatoirement
+        let choice = myMaze.getBox(x, y).chooseNeighbor();
+    
+        // appelle la fonction sur cette case
+        generateBox(choice);
+        // une fois la case traitée on refait la liste des case voisines disponibles
+        myMaze.findPossibleNeighbors(x, y);
+    }
 }

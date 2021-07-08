@@ -24,7 +24,7 @@ class Maze {
         return this.boxes[y][x];
     }
 
-    setVisited(x, y) {
+    setVisited([x, y]) {
         this.visited[y][x] = true;
     }
 
