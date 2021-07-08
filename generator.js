@@ -10,8 +10,8 @@ const mazeHeight = 11;
 let myMaze = new Maze(mazeHeight, mazeWidth);
 
 // coordonnées de départ
-let x = 0;
-let y = 0;
+let x = 5;
+let y = 5;
 
 // coordonnées de la destination, qui seront fixées à la fin
 let endx = 3;
@@ -27,7 +27,7 @@ console.log(myMaze);
 // Début du programme
 ////////
 
-generateBox([0, 0]);
+generateBox([x, y]);
 console.log(path);
 
 // création du labyrinthe "exploitable", on le remplit de murs ('M')
@@ -40,7 +40,7 @@ for (let i = 0; i < mazeHeight * 2 - 1; i++) {
 }
 console.table(finalMaze);
 // creuser la case de départ
-dug([x, y]);
+finalMaze[newCoord(x)][newCoord(y)] = 'S';
 console.table(finalMaze);
 
 // pour chaque liaison dans path
@@ -57,6 +57,10 @@ path.forEach(function (value) {
     dug(connectedCoordinates);
     console.table(finalMaze);
 })
+
+// Marquer la destination
+finalMaze[newCoord(endx)][newCoord(endy)] = 'G';
+console.table(finalMaze);
 
 
 ////////
