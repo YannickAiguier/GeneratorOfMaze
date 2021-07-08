@@ -17,6 +17,9 @@ let y = 0;
 let endx = 3;
 let endy = 3;
 
+// liste qui contiendra la suite de déplacements pour créer le labyrinthe
+let path = new Set();
+
 console.log("myMaze :");
 console.log(myMaze);
 
@@ -48,7 +51,10 @@ function generateBox([x, y]) {
     while (myMaze.getBox(x, y).hasPossibleNeighbors()) {
         // choisir une case aléatoirement
         let choice = myMaze.getBox(x, y).chooseNeighbor();
-    
+        // ici mettre le traitemet à effectuer pour représenter le passage d'une case à une autre
+        // enregistrer les coordonnées des 2 cases ? pour traitement lors de la construction du labyrinthe final ?
+        path.add([[x, y], choice]);
+        console.log(path);
         // appelle la fonction sur cette case
         generateBox(choice);
         // une fois la case traitée on refait la liste des case voisines disponibles
