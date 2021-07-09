@@ -60,7 +60,7 @@ class Maze {
             //console.log("case existante");
             this.getBox(x, y).addNeighbor(x + 1, y);
         } else {
-            console.log("case inexistante");
+            //console.log("case inexistante");
         }
         if (this.isPossible(x, y - 1)) {
             //console.log("case existante");

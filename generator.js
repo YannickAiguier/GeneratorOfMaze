@@ -45,26 +45,8 @@ console.table(finalMaze);
 finalMaze[newCoord(x)][newCoord(y)] = 'S';
 console.table(finalMaze);
 
-
+// générer le labyrinthe
 generateBox([x, y]);
-// console.log(path);
-
-
-
-// pour chaque liaison dans path
-path.forEach(function (value) {
-    // calculer les coordonnées de la case intermédiaire
-    let intermediate = findIntermediate(value);
-    // creuser la case intermédiaire
-    dug(intermediate);
-    // récupérer les coordonnées de la case liée
-    let connectedCoordinates = value[1];
-    connectedCoordinates[0] = newCoord(connectedCoordinates[0]);
-    connectedCoordinates[1] = newCoord(connectedCoordinates[1]);
-    // creuser la case liée
-    dug(connectedCoordinates);
-    console.table(finalMaze);
-})
 
 // Marquer la destination
 finalMaze[newCoord(endx)][newCoord(endy)] = 'G';
@@ -83,39 +65,22 @@ function generateBox([x, y]) {
     myMaze.setVisited([x, y]);
     // établir la liste des cases voisines disponibles
     myMaze.findPossibleNeighbors(x, y);
-    // console.log("visited :");
-    // console.table(myMaze.visited);
-    // console.log("possibleNeighbors :");
-    // console.log(myMaze.getBox(x, y).possibleNeighbors);
 
     // tant qu'il y a des cases voisines disponibles
     while (myMaze.getBox(x, y).hasPossibleNeighbors()) {
         // choisir une case aléatoirement
         let choice = myMaze.getBox(x, y).chooseNeighbor();
-
-        // // V2 : creuser directement dans finalMaze
-        // // il faut avoir les coordonnées [x1, y1],[x2, y2]
-        // // [x1, y1] = [x, y]
-        // // [x2, y2] = choice
-        // // console.log([x, y]);
-        // // console.log(choice);
-        // let intermediate = findIntermediate([[x, y], choice]);
-        // //console.log(intermediate);
-        // // creuser la case intermédiaire
-        // dug(intermediate);
-        // // récupérer les coordonnées de la case liéef
-        // let connectedCoordinates = choice;
-        // console.log(connectedCoordinates);
-        // // connectedCoordinates[0] = newCoord(connectedCoordinates[0]);
-        // // connectedCoordinates[1] = newCoord(connectedCoordinates[1]);
-        // // creuser la case liée
-        // dug(connectedCoordinates);
-        // console.table(finalMaze);
-
-        // ici mettre le traitemet à effectuer pour représenter le passage d'une case à une autre
-        // enregistrer les coordonnées des 2 cases ? pour traitement lors de la construction du labyrinthe final ?
-        path.add([[x, y], choice]);
-        //console.log(path);
+        // calculer les coordonnées de la case intermédiaire
+        let intermediate = findIntermediate([[x, y], choice]);
+        // creuser la case intermédiaire
+        dug(intermediate);
+        // récupérer les coordonnées de la case liée
+        let connectedCoordinates = new Array();
+        connectedCoordinates[0] = newCoord(choice[0]);
+        connectedCoordinates[1] = newCoord(choice[1]);
+        // creuser la case liée
+        dug(connectedCoordinates);
+        console.table(finalMaze);
 
         // appelle la fonction sur cette case
         generateBox(choice);
