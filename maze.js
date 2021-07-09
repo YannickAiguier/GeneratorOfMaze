@@ -43,30 +43,30 @@ class Maze {
         // pour chaque case adjacente dans l'ordre E S O N (x-1, y / x, y+1 / x+1, y / x, y-1)
         // si box_adjacente.isPossible() alors ajouter box_adjacente à possibleNeighbors
         this.getBox(x, y).removeNeighbors();
-        console.log(this.getBox(x, y).possibleNeighbors);
+        //console.log(this.getBox(x, y).possibleNeighbors);
         if (this.isPossible(x - 1, y)) {
-            console.log("case existante");
+            //console.log("case existante");
             this.getBox(x, y).addNeighbor(x - 1, y);
         } else {
-            console.log("case inexistante");
+            //console.log("case inexistante");
         }
         if (this.isPossible(x, y + 1)) {
-            console.log("case existante");
+            //console.log("case existante");
             this.getBox(x, y).addNeighbor(x, y + 1);
         } else {
-            console.log("case inexistante");
+            //console.log("case inexistante");
         }
         if (this.isPossible(x + 1, y)) {
-            console.log("case existante");
+            //console.log("case existante");
             this.getBox(x, y).addNeighbor(x + 1, y);
         } else {
             console.log("case inexistante");
         }
         if (this.isPossible(x, y - 1)) {
-            console.log("case existante");
+            //console.log("case existante");
             this.getBox(x, y).addNeighbor(x, y - 1);
         } else {
-            console.log("case inexistante");
+            //console.log("case inexistante");
         }
 
     }

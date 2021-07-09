@@ -17,7 +17,7 @@ class Box {
 
     chooseNeighbor() {
         // tirage aléatoire de l'indice de la case choisie dans possibleNeighbors
-        console.log((this.possibleNeighbors.length));
+        //console.log((this.possibleNeighbors.length));
         let nb = this.getRandomInt(this.possibleNeighbors.length);
         return this.possibleNeighbors[nb];
 
